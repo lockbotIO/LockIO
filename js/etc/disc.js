@@ -1,5 +1,6 @@
 const Discord = require("discord.js-commando");
 const botconfig = require("./../../config.json");
+const {RichEmbed} = require('discord.js');
 const path = require('path');
 
 let botOwners = botconfig.discord.botOwnerIDs;
