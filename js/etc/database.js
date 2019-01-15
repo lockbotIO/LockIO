@@ -76,7 +76,7 @@ module.exports = {
                 };
                 key += chunk;
             };
-            key_payload["key"] = key;
+            key_payload["key"] = key.slice(1);
             keys.insertOne(key_payload, function(err, response) {
                 if (err) {
                     reject("Error connecting to database.");
