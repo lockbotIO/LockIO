@@ -68,10 +68,10 @@ module.exports = {
     },
     generate_key: function(key_payload) {
         return new Promise(function(resolve, reject) {
-            let key = "ZENITH", alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
-            for (var x = 0; x < 4; x++) {
+            let key = "", alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            for (var x = 0; x < 5; x++) {
                 let chunk = "-";
-                for (var i = 0; i < 4; i++) {
+                for (var i = 0; i < 5; i++) {
                     chunk += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
                 };
                 key += chunk;
