@@ -92,6 +92,7 @@ module.exports = {
                     reject("Error connecting to database.");
                 };
                 console.log(`Deleted ${customer_id}'s information from database. (Subscription Cancelled)`);
+                console.log(doc);
                 resolve(doc);
             });
         });
