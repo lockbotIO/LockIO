@@ -37,12 +37,8 @@ app.post("/webhook/endpoint", function(req, res) {
         });
     } else if (_event["type"] === "customer.subscription.deleted") {
         (async () => {
-            // Remove key off database.
+            // Remove key off database. Will be swept up by on_ready.
             let key_data = await database.cancel_key(_event.data.object.customer);
-            // Remove person off server.
-            if (key_data.discordId !== "") {
-                bot.cancel_member(key_data.discordId);
-            };
         })();
     };
     res.status(200).json({status: "acknowledged"});

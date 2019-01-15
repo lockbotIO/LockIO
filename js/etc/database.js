@@ -95,5 +95,16 @@ module.exports = {
                 resolve(doc);
             });
         });
+    },
+    find_key: function(query_key, query_value) {
+        return new Promise(function(resolve, reject) {
+            keys.findOne({query_key: query_value}, function(err, doc) {
+                if (err) {
+                    reject("Error connecting to database.");
+                } else {
+                    resolve(doc);
+                };
+            });
+        });
     }
 };
