@@ -1,4 +1,5 @@
 const botconfig = require("./../../config.json");
+const stripe = require("stripe")(botconfig.payment_processor.stripe.secret_key);
 const database = require("./database.js");
 const bodyParser = require("body-parser");
 const {RichEmbed} = require('discord.js');
