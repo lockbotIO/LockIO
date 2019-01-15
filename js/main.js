@@ -38,7 +38,7 @@ if (!botconfig.group.domain) {
 if (botconfig.payment_processor.mode === "stripe") {
     // Launching Stripe Code
     const stripeProcessor = require('./payment_processors/stripe.js');
-    stripeProcessor.init();
+    stripeProcessor.manage_webhooks();
 } else if (botconfig.payment_processor.mode === "paypal") {
-    console.log("paypal processor");
+    const paypalProcessor = require('./payment_processors/paypal.js');
 };

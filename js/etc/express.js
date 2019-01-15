@@ -44,23 +44,26 @@ app.post("/webhook/endpoint", function(req, res) {
             if (group_server) {
                 // Remove key off database.
                 let key_data = await database.cancel_key(_event.data.object.customer);
-                let author = await lockIO.fetchUser(key_data.discordId);
-                let embed = new RichEmbed()
-                .setColor("#00FF00")
-                .setTitle(author.tag)
-                .setThumbnail(author.displayAvatarURL)
-                .setAuthor(botconfig.discord.guildName, group_server.iconURL || "https://discordapp.com/assets/dd4dbc0016779df1378e7812eabaa04d.png")
-                .setFooter("LockIO", "https://i.imgur.com/t9hCq0m.png")
-                .setTimestamp()
-                .setDescription(`We noticed you cancelled your subscription, and we're sad to see you go. Goodbye ${author.tag}! \`You can re-subscribe anytime you want!\``);
-                await author.send({embed});
-                let group_member = group_server.members.get(author.id);
-                await group_member.kick("Cancelled subscription.");
+                if (key_data.discordId) {
+                    let author = await lockIO.fetchUser(key_data.discordId);
+                    let embed = new RichEmbed()
+                    .setColor("#00FF00")
+                    .setTitle(author.tag)
+                    .setThumbnail(author.displayAvatarURL)
+                    .setAuthor(botconfig.discord.guildName, group_server.iconURL || "https://discordapp.com/assets/dd4dbc0016779df1378e7812eabaa04d.png")
+                    .setFooter("LockIO", "https://i.imgur.com/t9hCq0m.png")
+                    .setTimestamp()
+                    .setDescription(`We noticed you cancelled your subscription, and we're sad to see you go. Goodbye ${author.tag}! \`You can re-subscribe anytime you want!\``);
+                    await author.send({embed});
+                    let group_member = group_server.members.get(author.id);
+                    await group_member.kick("Cancelled subscription.");
+                };
             } else {
                 throw new Error(`guildName ${botconfig.discord.guildName} is incorrect.`);
             };
         })();
     };
+    res.status(200).json({status: "acknowledged"});
 });
 
 module.exports = server;
