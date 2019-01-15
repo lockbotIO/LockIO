@@ -24,18 +24,17 @@ let manage_webhooks = function() {
                     });
                 };
             };
-        });
-
-        // After we cleared up the webhooks, we can create our own.
-        stripe.webhookEndpoints.create({
-            url: endpoint,
-            enabled_events: ["customer.subscription.deleted", "checkout_beta.session_succeeded"],
-            connect: false
-        }, function(err, webhookEndpoint) {
-            if (err) {
-                throw new Error("Error creating Stripe webhook.");
-            };
-            resolve(webhookEndpoint);
+            // After we cleared up the webhooks, we can create our own.
+            stripe.webhookEndpoints.create({
+                url: endpoint,
+                enabled_events: ["customer.subscription.deleted", "checkout_beta.session_succeeded"],
+                connect: false
+            }, function(err, webhookEndpoint) {
+                if (err) {
+                    throw new Error("Error creating Stripe webhook.");
+                };
+                resolve(webhookEndpoint);
+            });
         });
     });
 };
