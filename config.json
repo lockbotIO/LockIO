@@ -13,7 +13,8 @@
         "botToken": "NTM0MTY3MjgzMzA4ODIyNTM4.Dx1pkg.6o9nsmdcvqcpWkxRPrd6hsm0yzY",
         "discordInvite": "https://discord.gg/XpqCzRg",
         "botOwnerIDs": [],
-        "memberRole": "Members"
+        "memberRole": "Members",
+        "lifetimeRole": "Lifetime"
     },
     "payment_processor": {
         "mode": "stripe",

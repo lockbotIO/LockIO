@@ -30,7 +30,8 @@ class Deactivate extends commando.Command {
             await message.author.send({embed});
             if (response === "Successfully deactivated.") {
                 let group_member = group_server.members.get(message.author.id);
-                await group_member.kick("Deactivated key.");
+                await group_member.setRoles([group_server.defaultRole], "Deactivated");
+                console.log(`${group_member.user.tag} (${group_member.id}) stripped of roles. Reason: Deactivated`);
             };
         } else {
             throw new Error(`guildName ${botconfig.discord.guildName} is incorrect.`);
