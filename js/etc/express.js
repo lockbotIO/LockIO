@@ -17,7 +17,7 @@ let server = app.listen(process.env.PORT || botconfig.express_server.port || 808
     console.log(`Express server launched at: https://${botconfig.heroku.app_name}.herokuapp.com:${port}/`);
 });
 
-app.get("/webhook/endpoint", function(req, res) {
+app.post("/webhook/endpoint", function(req, res) {
     let _event = JSON.parse(req.body.read);
     if (_event["type"] === "checkout_beta.session_succeeded") {
         // Let's retrieve this new subscription.
