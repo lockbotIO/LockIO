@@ -27,6 +27,9 @@
             "client_secret": ""
         }
     },
+    "heroku": {
+        "app_name": "lockio"
+    },
     "express_server": {
         "port": 5000
     },

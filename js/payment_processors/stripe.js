@@ -5,7 +5,7 @@ const stripe = require("stripe")(botconfig.payment_processor.stripe.secret_key);
 let manage_webhooks = function() {
     return new Promise(function(resolve, reject) {
         // First lets define our express endpoint URL.
-        let endpoint = `https://${express_server.address().address}:${express_server.address().port}/webhook/endpoint`;
+        let endpoint = `https://${botconfig.heroku.app_name}.herokuapp.com/webhook/endpoint`;
 
         // Then we want to delete all webhooks to prevent duplicates.
         stripe.webhookEndpoints.list({limit: 100}, function(err, response) {

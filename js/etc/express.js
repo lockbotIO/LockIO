@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 let server = app.listen(process.env.PORT || botconfig.express_server.port || 8080, function () {
     let host = server.address().address;
     let port = server.address().port;
-    console.log(`Express server launched at: https://${host}:${port}/`);
+    console.log(`Express server launched at: https://${botconfig.heroku.app_name}.herokuapp.com:${port}/`);
 });
 
 app.get("/webhook/endpoint", function(req, res) {
