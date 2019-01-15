@@ -1,0 +1,44 @@
+{
+    "auth": {
+        "ID": "xxxxx",
+        "secret": "xxxxx"
+    },
+    "group": {
+        "domain": "https://zenithnotify.co/",
+        "twitterHandle": "ZenithNotify"
+    },
+    "discord": {
+        "guildName": "lockIO",
+        "botPrefix": "!",
+        "botToken": "NTM0MTY3MjgzMzA4ODIyNTM4.Dx1pkg.6o9nsmdcvqcpWkxRPrd6hsm0yzY",
+        "botOwnerIDs": ["169193483465261056"],
+        "memberRole": "Members"
+    },
+    "payment_processor": {
+        "mode": "stripe",
+        "stripe": {
+            "publishable_key": "pk_test_D2DdpxWgycuamdeQYOdDZ0EY",
+            "secret_key": "sk_test_xP9E1qUNrUYdhFjPHWunaudX"
+        },
+        "paypal": {
+            "mode": "sandbox",
+            "client_id": "xxxxx",
+            "client_secret": "xxxxx"
+        }
+    },
+    "express_server": {
+        "port": 5000
+    },
+    "database": {
+        "mongo_url": "mongodb://zenithadmin:zenithadmin123@ds163612.mlab.com:63612/zenith"
+    },
+    "mailer_settings": {
+        "host": "smtp.ethereal.email",
+        "port": 587,
+        "secure": false,
+        "auth": {
+            "user": "no-reply@domain.com",
+            "pass": "xxxxx"
+        }
+    }
+}
