@@ -34,14 +34,13 @@ module.exports = {
                             if (err) {
                                 reject("Error connecting to database.");
                             };
-                            let paymentDate = new Date(doc.paymentTimestamp);
                             resolve({
                                 "Key": key,
                                 "Discord ID": discordId,
                                 "Customer ID": doc.customerId,
                                 "Subscription ID": doc.subscriptionId,
                                 "Payment E-mail": email,
-                                "Payment Timestamp": `${paymentDate.toLocaleDateString("en-US")} ${paymentDate.toLocaleTimeString("en-US")}`
+                                "Payment Timestamp (ISO)": new Date(doc.paymentTimestamp).toISOString()
                             });
                         });
                     });
