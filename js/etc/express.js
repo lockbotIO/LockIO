@@ -18,6 +18,7 @@ let server = app.listen(process.env.PORT || botconfig.express_server.port || 808
 });
 
 app.post("/webhook/endpoint", function(req, res) {
+    console.log(req.body);
     let _event = JSON.parse(req.body.read);
     if (_event["type"] === "checkout_beta.session_succeeded") {
         // Let's retrieve this new subscription.
