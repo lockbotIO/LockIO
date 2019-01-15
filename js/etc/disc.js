@@ -26,7 +26,6 @@ lockIO.registry
     .registerCommandsIn(path.join(__dirname, './../commands'));
 
 lockIO.on("guildMemberAdd", async (member) => {
-    await member.guild.channels.get("logs").send(`<@${member.id}> [${member.user.tag}] has joined this server`);
     let embed = new RichEmbed()
       .setColor("#00FF00")
       .setTitle(member.user.tag)
@@ -36,10 +35,6 @@ lockIO.on("guildMemberAdd", async (member) => {
       .setTimestamp()
       .setDescription(`Activate your key with \`${botconfig.discord.botPrefix}activate [key] [payment email]\``);
     await member.send({embed});
-});
-
-lockIO.on("guildMemberRemove", async (member) => {
-    await member.guild.channels.get("logs").send(`<@${member.id}> [${member.user.tag}] has left/been kicked from this server`);
 });
 
 lockIO.on("ready", () => {
