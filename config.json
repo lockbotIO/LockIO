@@ -4,14 +4,15 @@
         "secret": "xxxxx"
     },
     "group": {
-        "domain": "https://zenithnotify.co/",
-        "twitterHandle": "ZenithNotify"
+        "domain": "https://lock.io/",
+        "twitterHandle": "LockIO"
     },
     "discord": {
         "guildName": "lockIO",
         "botPrefix": "!",
         "botToken": "NTM0MTY3MjgzMzA4ODIyNTM4.Dx1pkg.6o9nsmdcvqcpWkxRPrd6hsm0yzY",
-        "botOwnerIDs": ["169193483465261056"],
+        "discordInvite": "https://discord.gg/XpqCzRg",
+        "botOwnerIDs": [],
         "memberRole": "Members"
     },
     "payment_processor": {
@@ -22,8 +23,8 @@
         },
         "paypal": {
             "mode": "sandbox",
-            "client_id": "xxxxx",
-            "client_secret": "xxxxx"
+            "client_id": "",
+            "client_secret": ""
         }
     },
     "express_server": {
@@ -32,13 +33,8 @@
     "database": {
         "mongo_url": "mongodb://zenithadmin:zenithadmin123@ds163612.mlab.com:63612/zenith"
     },
-    "mailer_settings": {
-        "host": "smtp.ethereal.email",
-        "port": 587,
-        "secure": false,
-        "auth": {
-            "user": "no-reply@domain.com",
-            "pass": "xxxxx"
-        }
+    "sendgrid_settings": {
+        "apiKey": "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",
+        "host": "no-reply@lock.io"
     }
 }
