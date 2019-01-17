@@ -22,7 +22,7 @@ class Activate extends commando.Command {
                     prompt: "Please enter your **key**.",
                     type: "string",
                     validate: text => {
-                        if (text.length == 26) return true;
+                        if (text.length == 29) return true;
                         return "Your **key** is incorrect.";
                     }
                 },
