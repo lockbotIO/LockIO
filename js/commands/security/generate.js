@@ -1,5 +1,6 @@
 const botconfig = require("./../../../config.json");
 const database = require("./../../etc/database.js");
+const sendMail = require("./../../etc/mailer.js");
 const commando = require("discord.js-commando");
 const {RichEmbed} = require('discord.js');
 
