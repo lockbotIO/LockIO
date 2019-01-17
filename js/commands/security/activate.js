@@ -52,6 +52,10 @@ class Activate extends commando.Command {
               .setTimestamp();
             if (typeof response === "object" && response !== null) {
                 let group_member = group_server.members.get(message.author.id);
+                if (response["Subscription ID"] === "Lifetime") {
+                    let lifetime_role = group_server.roles.find(role => role.name === botconfig.discord.lifetimeRole);
+                    await group_member.addRole(lifetime_role);
+                };
                 let members_role = group_server.roles.find(role => role.name === botconfig.discord.memberRole);
                 await group_member.addRole(members_role);
                 embed.setDescription("Account **successfully** authenticated!")
