@@ -81,7 +81,7 @@ module.exports = {
                 if (err) {
                     reject("Error connecting to database.");
                 };
-                resolve(key);
+                resolve(key_payload);
             });
         });
     },
