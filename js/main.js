@@ -40,5 +40,7 @@ if (botconfig.payment_processor.mode === "stripe") {
     const stripeProcessor = require('./payment_processors/stripe.js');
     stripeProcessor.manage_webhooks();
 } else if (botconfig.payment_processor.mode === "paypal") {
+    // Launching PayPal Code
     const paypalProcessor = require('./payment_processors/paypal.js');
+    paypalProcessor.manage_webhooks();
 };

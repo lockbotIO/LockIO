@@ -1,26 +1,26 @@
 {
     "auth": {
-        "ID": "xxxxx",
-        "secret": "xxxxx"
+        "ID": "user",
+        "secret": "test"
     },
     "group": {
-        "domain": "https://lock.io/",
-        "twitterHandle": "LockIO"
+        "domain": "",
+        "twitterHandle": ""
     },
     "discord": {
-        "guildName": "lockIO",
+        "guildName": "",
         "botPrefix": "!",
-        "botToken": "NTM0MTY3MjgzMzA4ODIyNTM4.Dx1pkg.6o9nsmdcvqcpWkxRPrd6hsm0yzY",
-        "discordInvite": "https://discord.gg/XpqCzRg",
-        "botOwnerIDs": [],
+        "botToken": "",
+        "discordInvite": "",
+        "botOwnerIDs": [""],
         "memberRole": "Members",
-        "lifetimeRole": "Lifetime"
+        "lifetimeRole": "F&F"
     },
     "payment_processor": {
         "mode": "stripe",
         "stripe": {
-            "publishable_key": "pk_test_D2DdpxWgycuamdeQYOdDZ0EY",
-            "secret_key": "sk_test_xP9E1qUNrUYdhFjPHWunaudX"
+            "publishable_key": "",
+            "secret_key": ""
         },
         "paypal": {
             "mode": "sandbox",
@@ -29,16 +29,16 @@
         }
     },
     "heroku": {
-        "app_name": "lockio"
+        "app_name": ""
     },
     "express_server": {
         "port": 5000
     },
     "database": {
-        "mongo_url": "mongodb://zenithadmin:zenithadmin123@ds163612.mlab.com:63612/zenith"
+        "mongo_url": ""
     },
     "sendgrid_settings": {
-        "apiKey": "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",
-        "host": "no-reply@lock.io"
+        "apiKey": "",
+        "host": "no-reply@domain.com"
     }
 }

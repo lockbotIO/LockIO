@@ -17,7 +17,7 @@ let server = app.listen(process.env.PORT || botconfig.express_server.port || 808
     console.log(`Express server launched at: https://${botconfig.heroku.app_name}.herokuapp.com:${port}/`);
 });
 
-app.post("/webhook/endpoint", function(req, res) {
+app.post("/webhook/endpoint/stripe", function(req, res) {
     let _event = req.body;
     if (_event["type"] === "checkout_beta.session_succeeded") {
         // Let's retrieve this new subscription.
@@ -36,10 +36,16 @@ app.post("/webhook/endpoint", function(req, res) {
             });
         });
     } else if (_event["type"] === "customer.subscription.deleted") {
-        (async () => {
-            // Remove key off database. Will be swept up by on_ready.
-            let key_data = await database.cancel_key(_event.data.object.customer);
-        })();
+        // Remove key off database. Will be swept up by on_ready.
+        database.cancel_key(_event.data.object.customer);
+    };
+    res.status(200).json({status: "acknowledged"});
+});
+
+app.post("/webhook/endpoint/paypal", function(req, res) {
+    let _event = req.body;
+    if (_event["type"] === "BILLING.SUBSCRIPTION.CREATED") {
+    } else if (_event["type"] === "BILLING.SUBSCRIPTION.CANCELLED") {
     };
     res.status(200).json({status: "acknowledged"});
 });

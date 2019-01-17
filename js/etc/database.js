@@ -86,14 +86,11 @@ module.exports = {
         });
     },
     cancel_key: function(customer_id) {
-        return new Promise(function(resolve, reject) {
-            keys.findOneAndDelete({customerId: customer_id}, function(err, doc) {
-                if (err) {
-                    reject("Error connecting to database.");
-                };
-                console.log(`Deleted ${customer_id}'s information from database. (Subscription Cancelled)`);
-                resolve(doc);
-            });
+        keys.findOneAndDelete({customerId: customer_id}, function(err, doc) {
+            if (err) {
+                reject("Error connecting to database.");
+            };
+            console.log(`Deleted ${customer_id}'s information from database. (Subscription Cancelled)`);
         });
     },
     find_key: function(query_key, query_value) {
