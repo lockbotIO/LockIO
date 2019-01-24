@@ -93,9 +93,9 @@ module.exports = {
             console.log(`Deleted ${customer_id}'s information from database. (Subscription Cancelled)`);
         });
     },
-    find_key: function(query_key, query_value) {
+    find_key: function(query_value) {
         return new Promise(function(resolve, reject) {
-            keys.findOne({query_key: query_value}, function(err, doc) {
+            keys.findOne({discordId: query_value}, function(err, doc) {
                 if (err) {
                     reject("Error connecting to database.");
                 } else {

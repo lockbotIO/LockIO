@@ -46,7 +46,7 @@ lockIO.on("ready", () => {
     setInterval(() => {
         group_server.members.forEach(async function(guildMember, guildMemberId) {
             if (guildMember.kickable && !guildMember.hasPermission("KICK_MEMBERS", true, true) && guildMember.roles.has(members_role.id) && !guildMember.roles.has(lifetime_role.id)) {
-                let doc = await database.find_key("discordId", guildMember.id);
+                let doc = await database.find_key(guildMemberId);
                 if (!doc || doc === null) {
                     let embed = new RichEmbed()
                       .setColor("#FF0000")
@@ -58,7 +58,7 @@ lockIO.on("ready", () => {
                       .setDescription(`Your membership has been **revoked** because you **did not** have a key assigned. To re-gain access please use the command \`${botconfig.discord.botPrefix}activate [key] [payment email]\`.`);
                     await guildMember.user.send({embed});
                     await guildMember.setRoles([group_server.defaultRole], "No key linked");
-                    console.log(`${guildMember.user.tag} (${guildMember.id}) stripped of roles. Reason: No key linked`);
+                    console.log(`${guildMember.user.tag} (${guildMemberId}) stripped of roles. Reason: No key linked`);
                 };
             };
         });
