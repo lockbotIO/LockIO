@@ -44,8 +44,8 @@ app.post("/webhook/endpoint/stripe", function(req, res) {
 
 app.post("/webhook/endpoint/paypal", function(req, res) {
     let _event = req.body;
-    if (_event["type"] === "BILLING.SUBSCRIPTION.CREATED") {
-    } else if (_event["type"] === "BILLING.SUBSCRIPTION.CANCELLED") {
+    if (_event.event_type === "BILLING.SUBSCRIPTION.CREATED") {
+    } else if (_event.event_type === "BILLING.SUBSCRIPTION.CANCELLED") {
     };
     res.status(200).json({status: "acknowledged"});
 });

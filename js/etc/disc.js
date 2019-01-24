@@ -46,7 +46,7 @@ lockIO.on("ready", () => {
     setInterval(() => {
         group_server.members.forEach(async function(guildMember, guildMemberId) {
             if (guildMember.kickable && !guildMember.hasPermission("KICK_MEMBERS", true, true) && guildMember.roles.has(members_role.id) && !guildMember.roles.has(lifetime_role.id)) {
-                let doc = await database.find_key("discordId", guildMemberId);
+                let doc = await database.find_key("discordId", guildMember.id);
                 if (!doc || doc === null) {
                     let embed = new RichEmbed()
                       .setColor("#FF0000")
