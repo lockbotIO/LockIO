@@ -42,10 +42,21 @@ app.post("/webhook/endpoint/stripe", function(req, res) {
     res.status(200).json({status: "acknowledged"});
 });
 
-app.post("/webhook/endpoint/paypal", function(req, res) {
+app.post("/webhook/endpoint/paypal", async function(req, res) {
     let _event = req.body;
     if (_event.event_type === "BILLING.SUBSCRIPTION.CREATED") {
+        let key = await database.generate_key({
+            paymentEmail: _event.resource.payer.payer_info.email,
+            customerId: _event.resource.payer.payer_info.payer_id,
+            subscriptionId: _event.resource.id,
+            paymentTimestamp: Date.now(),
+            discordId: ""
+        });
+        // Lets e-mail the customer his/her key.
+        sendMail(_event.resource.payer.payer_info.email, key);
     } else if (_event.event_type === "BILLING.SUBSCRIPTION.CANCELLED") {
+        // Remove key off database. Will be swept up by on_ready.
+        database.cancel_key(_event.resource.payer.payer_info.payer_id);
     };
     res.status(200).json({status: "acknowledged"});
 });
