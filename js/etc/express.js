@@ -19,9 +19,9 @@ let server = app.listen(process.env.PORT || botconfig.express_server.port || 808
 
 app.post("/webhook/endpoint/stripe", function(req, res) {
     let _event = req.body;
-    if (_event["type"] === "checkout_beta.session_succeeded") {
+    if (_event["type"] === "customer.subscription.created") {
         // Let's retrieve this new subscription.
-        stripe.subscriptions.retrieve(_event.data.object.subscription, function(err, subscription) {
+        stripe.subscriptions.retrieve(_event.data.object.id, function(err, subscription) {
             // Now let's get the customer.
             stripe.customers.retrieve(subscription.customer, async function(err, customer) {
                 let key = await database.generate_key({

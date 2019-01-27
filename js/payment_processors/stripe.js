@@ -26,7 +26,7 @@ let manage_webhooks = function() {
         // After we cleared up the webhooks, we can create our own.
         stripe.webhookEndpoints.create({
             url: endpoint,
-            enabled_events: ["customer.subscription.deleted", "checkout_beta.session_succeeded"],
+            enabled_events: ["customer.subscription.deleted", "customer.subscription.created"],
             connect: false
         }, function(err, webhookEndpoint) {
             if (err) {
