@@ -36,7 +36,7 @@ let manage_webhooks = function() {
             if (error) {
                 throw new Error("Error creating PayPal webhook.");
             } else {
-                console.log(`Created Stripe webhook [${webhook.id}].`);
+                console.log(`Created PayPal webhook [${webhook.id}].`);
             };
         });
     });

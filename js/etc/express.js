@@ -37,7 +37,7 @@ app.post("/webhook/endpoint/stripe", function(req, res) {
         });
     } else if (_event["type"] === "customer.subscription.deleted") {
         // Remove key off database. Will be swept up by on_ready.
-        database.cancel_key(_event.data.object.customer);
+        database.cancel_key(_event.data.object.id);
     };
     res.status(200).json({status: "acknowledged"});
 });
@@ -56,7 +56,7 @@ app.post("/webhook/endpoint/paypal", async function(req, res) {
         sendMail(_event.resource.payer.payer_info.email, key);
     } else if (_event.event_type === "BILLING.SUBSCRIPTION.CANCELLED") {
         // Remove key off database. Will be swept up by on_ready.
-        database.cancel_key(_event.resource.payer.payer_info.payer_id);
+        database.cancel_key(_event.resource.id);
     };
     res.status(200).json({status: "acknowledged"});
 });

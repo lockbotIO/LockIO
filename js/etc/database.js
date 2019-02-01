@@ -86,7 +86,7 @@ module.exports = {
         });
     },
     cancel_key: function(customer_id) {
-        keys.findOneAndDelete({customerId: customer_id}, function(err, doc) {
+        keys.findOneAndDelete({subscriptionId: customer_id}, function(err, doc) {
             if (err) {
                 reject("Error connecting to database.");
             };
