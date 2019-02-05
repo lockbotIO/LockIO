@@ -21,10 +21,6 @@ if (!botconfig.group.domain) {
     throw new Error("\"payment_processor\" > \"mode\" must either be \"stripe\" or \"paypal\" in config.json!");
 } else if (botconfig.payment_processor.mode === "stripe" && (!botconfig.payment_processor.stripe.publishable_key || !botconfig.payment_processor.stripe.secret_key)) {
     throw new Error("Please fill out \"publishable_key\" and \"secret_key\" under \"payment_processor\" > \"stripe\" in config.json!");
-} else if (botconfig.payment_processor.mode === "paypal" && botconfig.payment_processor.paypal.mode !== "sandbox" && botconfig.payment_processor.paypal.mode !== "live") {
-    throw new Error("\"paypal\" > \"mode\" must either be \"sandbox\" or \"live\" in config.json!");
-} else if (botconfig.payment_processor.mode === "paypal" && (!botconfig.payment_processor.paypal.client_id || !botconfig.payment_processor.paypal.client_secret)) {
-    throw new Error("Please fill out \"client_id\" and \"client_secret\" under \"payment_processor\" > \"paypal\" in config.json!");
 } else if (!Number.isInteger(botconfig.express_server.port) || botconfig.express_server.port.toString().length != 4) {
     throw new Error("\"port\" under \"express_server\" must be a 4 digit integer in config.json!");
 } else if (!botconfig.database.mongo_url) {
@@ -37,10 +33,8 @@ if (!botconfig.group.domain) {
 
 if (botconfig.payment_processor.mode === "stripe") {
     // Launching Stripe Code
-    const stripeProcessor = require('./payment_processors/stripe.js');
-    stripeProcessor.manage_webhooks();
+    require('./payment_processors/stripe.js')();
 } else if (botconfig.payment_processor.mode === "paypal") {
-    // Launching PayPal Code
-    const paypalProcessor = require('./payment_processors/paypal.js');
-    paypalProcessor.manage_webhooks();
+    // Launching Express Server
+    require("./etc/express.js");
 };

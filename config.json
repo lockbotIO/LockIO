@@ -1,8 +1,4 @@
 {
-    "auth": {
-        "ID": "user",
-        "secret": "test"
-    },
     "group": {
         "domain": "",
         "twitterHandle": ""
@@ -21,11 +17,6 @@
         "stripe": {
             "publishable_key": "",
             "secret_key": ""
-        },
-        "paypal": {
-            "mode": "sandbox",
-            "client_id": "",
-            "client_secret": ""
         }
     },
     "heroku": {

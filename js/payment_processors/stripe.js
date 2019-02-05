@@ -2,7 +2,7 @@ const express_server = require("./../etc/express.js");
 const botconfig = require("./../../config.json");
 const stripe = require("stripe")(botconfig.payment_processor.stripe.secret_key);
 
-let manage_webhooks = function() {
+module.exports = function() {
     // First lets define our express endpoint URL.
     let endpoint = `https://${botconfig.heroku.app_name}.herokuapp.com/webhook/endpoint/stripe`;
 
@@ -35,8 +35,4 @@ let manage_webhooks = function() {
             console.log(`Created Stripe webhook [${webhookEndpoint.id}].`);
         });
     });
-};
-
-module.exports = {
-    manage_webhooks: manage_webhooks
 };
