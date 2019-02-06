@@ -31,10 +31,12 @@ if (!botconfig.group.domain) {
     throw new Error("Please input a sender e-mail under \"sendgrid_settings\" > \"host\" in config.json!");
 };
 
-if (botconfig.payment_processor.mode === "stripe") {
-    // Launching Stripe Code
-    require('./payment_processors/stripe.js')();
-} else if (botconfig.payment_processor.mode === "paypal") {
-    // Launching Express Server
-    require("./etc/express.js");
+switch (botconfig.payment_processor.mode) {
+    case "stripe":
+        require('./payment_processors/stripe.js')();
+        break;
+    case "paypal":
+        require("./etc/express.js");
 };
+
+require("./etc/disc.js");
